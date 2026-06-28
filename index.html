@@ -30,30 +30,44 @@
             cursor: none;
         }
 
-        /* Custom cursor */
+        a, button { cursor: none; }
+
         .cursor {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background: var(--primary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s;
+            transition: transform 0.15s, width 0.15s, height 0.15s, background 0.15s;
+            mix-blend-mode: difference;
         }
 
         .cursor-follower {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(0, 212, 255, 0.4);
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid rgba(0, 212, 255, 0.35);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9998;
-            transition: all 0.12s ease;
+            transition: all 0.08s linear;
+            mix-blend-mode: difference;
         }
 
-        /* Navbar */
+        .cursor.hover {
+            width: 16px;
+            height: 16px;
+            background: white;
+        }
+
+        .cursor-follower.hover {
+            width: 48px;
+            height: 48px;
+            border-color: rgba(0, 212, 255, 0.6);
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -98,12 +112,10 @@
             padding: 10px 24px;
             border-radius: 8px;
             font-weight: 600 !important;
-            transition: opacity 0.2s !important;
         }
 
-        .nav-cta:hover { opacity: 0.85; color: var(--bg) !important; }
+        .nav-cta:hover { opacity: 0.85; }
 
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -255,7 +267,6 @@
             margin-top: 4px;
         }
 
-        /* Section */
         section { padding: 100px 24px; }
 
         .section-label {
@@ -285,7 +296,6 @@
 
         .container { max-width: 1100px; margin: 0 auto; }
 
-        /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -354,7 +364,6 @@
             color: #FFD700;
         }
 
-        /* How it works */
         .how-section { background: var(--surface); }
 
         .steps {
@@ -364,10 +373,7 @@
             margin-top: 64px;
         }
 
-        .step {
-            text-align: center;
-            position: relative;
-        }
+        .step { text-align: center; }
 
         .step-num {
             width: 56px;
@@ -395,7 +401,6 @@
             line-height: 1.6;
         }
 
-        /* Security section */
         .security-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -489,7 +494,6 @@
             border-radius: 8px;
         }
 
-        /* Pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -566,18 +570,10 @@
             padding: 8px 0;
         }
 
-        .pricing-features li span {
-            color: var(--success);
-            font-size: 16px;
-        }
+        .pricing-features li span { color: var(--success); font-size: 16px; }
 
-        .pricing-features li.disabled {
-            opacity: 0.4;
-        }
-
-        .pricing-features li.disabled span {
-            color: var(--muted);
-        }
+        .pricing-features li.disabled { opacity: 0.4; }
+        .pricing-features li.disabled span { color: var(--muted); }
 
         .btn-pricing {
             display: block;
@@ -590,19 +586,10 @@
             transition: all 0.2s;
         }
 
-        .btn-pricing.primary {
-            background: var(--primary);
-            color: var(--bg);
-        }
-
-        .btn-pricing.ghost {
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-
+        .btn-pricing.primary { background: var(--primary); color: var(--bg); }
+        .btn-pricing.ghost { border: 1px solid var(--border); color: var(--text); }
         .btn-pricing:hover { opacity: 0.85; transform: translateY(-1px); }
 
-        /* CTA */
         .cta-section {
             text-align: center;
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
@@ -616,17 +603,9 @@
             margin-bottom: 16px;
         }
 
-        .cta-section p {
-            font-size: 16px;
-            color: var(--muted);
-            margin-bottom: 40px;
-        }
+        .cta-section p { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
 
-        /* Footer */
-        footer {
-            padding: 48px 24px;
-            border-top: 1px solid var(--border);
-        }
+        footer { padding: 48px 24px; border-top: 1px solid var(--border); }
 
         .footer-inner {
             max-width: 1100px;
@@ -634,7 +613,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: gap;
+            flex-wrap: wrap;
             gap: 24px;
         }
 
@@ -660,13 +639,8 @@
         }
 
         .footer-links a:hover { color: var(--text); }
+        .footer-copy { color: var(--muted); font-size: 13px; }
 
-        .footer-copy {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* Scroll indicator */
         .scroll-line {
             position: fixed;
             top: 0;
@@ -692,7 +666,6 @@
 <div class="cursor-follower" id="follower"></div>
 <div class="scroll-line" id="scrollLine"></div>
 
-<!-- Navbar -->
 <nav>
     <div class="nav-logo">SENTRIOLA</div>
     <ul class="nav-links">
@@ -704,7 +677,6 @@
     </ul>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
@@ -721,12 +693,8 @@
             Scan QR codes, analyze URLs, detect phishing SMS, and generate unbreakable passwords — all in one app.
         </p>
         <div class="hero-btns">
-            <a href="#download" class="btn-primary">
-                ▶ Get on Google Play
-            </a>
-            <a href="#features" class="btn-ghost">
-                Explore Features →
-            </a>
+            <a href="#download" class="btn-primary">▶ Get on Google Play</a>
+            <a href="#features" class="btn-ghost">Explore Features →</a>
         </div>
         <div class="hero-stats">
             <div class="stat">
@@ -749,13 +717,11 @@
     </div>
 </section>
 
-<!-- Features -->
 <section id="features">
     <div class="container">
         <div class="section-label">Features</div>
         <h2 class="section-title">Everything you need to<br>stay protected</h2>
         <p class="section-sub">Four powerful security modules working together to keep you safe in the digital world.</p>
-
         <div class="features-grid">
             <div class="feature-card">
                 <span class="feature-icon">▦</span>
@@ -763,21 +729,18 @@
                 <p class="feature-desc">Scan any QR code and instantly analyze the destination URL with 70+ security engines before you open it.</p>
                 <span class="feature-tag">VirusTotal Powered</span>
             </div>
-
             <div class="feature-card">
                 <span class="feature-icon">🔗</span>
                 <div class="feature-title">URL Checker</div>
                 <p class="feature-desc">Paste any link and get a full security report. Detects phishing, malware, and suspicious patterns in seconds.</p>
                 <span class="feature-tag">Real-time Analysis</span>
             </div>
-
             <div class="feature-card">
                 <span class="feature-icon">💬</span>
                 <div class="feature-title">SMS Analyzer</div>
                 <p class="feature-desc">Paste suspicious SMS text and let our AI analyze it for phishing attempts, fake institutions, and hidden threats.</p>
                 <span class="feature-tag">AI Powered</span>
             </div>
-
             <div class="feature-card">
                 <span class="feature-icon">🔑</span>
                 <div class="feature-title">Password Generator</div>
@@ -788,13 +751,11 @@
     </div>
 </section>
 
-<!-- How it works -->
 <section class="how-section">
     <div class="container">
         <div class="section-label">How it works</div>
         <h2 class="section-title">Simple. Fast. Secure.</h2>
         <p class="section-sub">Protect yourself in three easy steps.</p>
-
         <div class="steps">
             <div class="step">
                 <div class="step-num">1</div>
@@ -815,13 +776,11 @@
     </div>
 </section>
 
-<!-- Security -->
 <section id="security">
     <div class="container">
         <div class="section-label">Security</div>
         <h2 class="section-title">Built with privacy first</h2>
         <p class="section-sub">Your data stays yours. We built Sentriola so your most sensitive information never leaves your device.</p>
-
         <div class="security-grid">
             <ul class="security-list">
                 <li>
@@ -853,7 +812,6 @@
                     </div>
                 </li>
             </ul>
-
             <div class="security-visual">
                 <span class="shield">🛡️</span>
                 <h3>Bank-Grade Security</h3>
@@ -869,13 +827,11 @@
     </div>
 </section>
 
-<!-- Pricing -->
 <section id="pricing">
     <div class="container" style="text-align: center;">
         <div class="section-label">Pricing</div>
         <h2 class="section-title">Start free, upgrade anytime</h2>
         <p class="section-sub" style="margin: 0 auto;">No hidden fees. Cancel anytime.</p>
-
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="pricing-name">Free</div>
@@ -888,11 +844,10 @@
                     <li><span>✓</span> Basic security reports</li>
                     <li class="disabled"><span>✗</span> Password history</li>
                     <li class="disabled"><span>✗</span> URL history</li>
-                    <li class="disabled"><span>✗</span> Unlimited scans</li>
+                    <li class="disabled"><span>✗</span> 50 daily scans</li>
                 </ul>
                 <a href="#download" class="btn-pricing ghost">Get Started</a>
             </div>
-
             <div class="pricing-card featured">
                 <div class="pricing-badge">⚡ Most Popular</div>
                 <div class="pricing-name">Premium</div>
@@ -913,7 +868,6 @@
     </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section" id="download">
     <div class="container">
         <h2>Ready to stay protected?</h2>
@@ -927,7 +881,6 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer>
     <div class="footer-inner">
         <div class="footer-logo">SENTRIOLA</div>
@@ -944,7 +897,6 @@
 </footer>
 
 <script>
-    // Custom cursor
     const cursor = document.getElementById('cursor');
     const follower = document.getElementById('follower');
 
@@ -954,13 +906,13 @@
     document.addEventListener('mousemove', e => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        cursor.style.left = mouseX - 6 + 'px';
-        cursor.style.top = mouseY - 6 + 'px';
+        cursor.style.left = mouseX - 4 + 'px';
+        cursor.style.top = mouseY - 4 + 'px';
     });
 
     function animateFollower() {
-        followerX += (mouseX - followerX - 18) * 0.12;
-        followerY += (mouseY - followerY - 18) * 0.12;
+        followerX += (mouseX - followerX - 16) * 0.12;
+        followerY += (mouseY - followerY - 16) * 0.12;
         follower.style.left = followerX + 'px';
         follower.style.top = followerY + 'px';
         requestAnimationFrame(animateFollower);
@@ -969,16 +921,15 @@
 
     document.querySelectorAll('a, button').forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2)';
-            follower.style.transform = 'scale(1.5)';
+            cursor.classList.add('hover');
+            follower.classList.add('hover');
         });
         el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            follower.style.transform = 'scale(1)';
+            cursor.classList.remove('hover');
+            follower.classList.remove('hover');
         });
     });
 
-    // Scroll progress
     const scrollLine = document.getElementById('scrollLine');
     window.addEventListener('scroll', () => {
         const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
