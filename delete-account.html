@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentriola - Delete Account</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0A0E1A;
+            color: #E2E8F0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(135deg, #0A0E1A 0%, #1A0A3E 100%);
+            padding: 48px 24px;
+            text-align: center;
+            border-bottom: 1px solid #1F2937;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00D4FF;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        header p { color: #64748B; font-size: 14px; }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            flex: 1;
+            text-align: center;
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+        h1 {
+            color: #EF4444;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        p {
+            color: #94A3B8;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .card {
+            background: #111827;
+            border: 1px solid #1F2937;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+            text-align: left;
+        }
+        .card h2 {
+            color: #E2E8F0;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .step-num {
+            background: #00D4FF;
+            color: #0A0E1A;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .step p { margin: 0; color: #94A3B8; font-size: 14px; }
+        .btn {
+            display: inline-block;
+            background: #EF4444;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin: 8px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn-secondary {
+            background: #1F2937;
+            color: #94A3B8;
+        }
+        .warning {
+            background: #1F0A0A;
+            border: 1px solid #EF4444;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            color: #EF4444;
+            font-size: 14px;
+        }
+        footer {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid #1F2937;
+            color: #64748B;
+            font-size: 13px;
+        }
+        a { color: #00D4FF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">SENTRIOLA</div>
+    <p>Your digital security shield</p>
+</header>
+
+<div class="container">
+    <div class="icon">🗑️</div>
+    <h1>Delete Your Account</h1>
+    <p>We're sorry to see you go. You can delete your account directly from the app or by contacting us.</p>
+
+    <div class="warning">
+        ⚠️ Account deletion is permanent and cannot be undone. All your data will be permanently removed.
+    </div>
+
+    <div class="card">
+        <h2>Option 1 — Delete from the App</h2>
+        <div class="step">
+            <div class="step-num">1</div>
+            <p>Open Sentriola and sign in to your account.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <p>Tap the profile icon in the top right corner.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <p>Go to <strong style="color:#E2E8F0">Profile</strong>.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <p>Scroll down and tap <strong style="color:#EF4444">Delete Account</strong>.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <p>Confirm the deletion. Your account and all associated data will be permanently removed.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Option 2 — Request via Email</h2>
+        <div class="step">
+            <div class="step-num">1</div>
+            <p>Send an email to <a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <p>Use subject: <strong style="color:#E2E8F0">"Account Deletion Request"</strong></p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <p>Include the email address associated with your account.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <p>We will process your request within <strong style="color:#E2E8F0">7 business days</strong>.</p>
+        </div>
+    </div>
+
+    <a href="mailto:support@sentriola.com?subject=Account Deletion Request" class="btn">
+        📧 Request Account Deletion
+    </a>
+    <a href="privacy.html" class="btn btn-secondary">
+        Privacy Policy
+    </a>
+</div>
+
+<footer>
+    <p>© 2026 Sentriola · <a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+</footer>
+
+</body>
+</html>
