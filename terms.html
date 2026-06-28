@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentriola - Terms of Use</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0A0E1A;
+            color: #E2E8F0;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0A0E1A 0%, #1A0A3E 100%);
+            padding: 48px 24px;
+            text-align: center;
+            border-bottom: 1px solid #1F2937;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00D4FF;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #64748B;
+            font-size: 14px;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px;
+            background: #111827;
+            border-bottom: 1px solid #1F2937;
+        }
+
+        .lang-btn {
+            padding: 8px 24px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #00D4FF;
+            color: #0A0E1A;
+        }
+
+        .lang-btn:not(.active) {
+            background: #1F2937;
+            color: #64748B;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .content { display: none; }
+        .content.active { display: block; }
+
+        .updated {
+            display: inline-block;
+            background: #1F2937;
+            color: #64748B;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #00D4FF;
+            font-size: 18px;
+            margin: 40px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #1F2937;
+        }
+
+        p { color: #94A3B8; margin-bottom: 12px; }
+
+        ul {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        ul li {
+            color: #94A3B8;
+            padding: 6px 0 6px 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "→";
+            color: #00D4FF;
+            position: absolute;
+            left: 0;
+        }
+
+        strong { color: #E2E8F0; }
+
+        .highlight {
+            background: #0D2137;
+            border-left: 3px solid #00D4FF;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight p { color: #E2E8F0; margin: 0; }
+
+        .warning {
+            background: #1F1505;
+            border-left: 3px solid #F59E0B;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .warning p { color: #FCD34D; margin: 0; }
+
+        a { color: #00D4FF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid #1F2937;
+            color: #64748B;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">SENTRIOLA</div>
+    <p>Dijital güvenliğinin kalkanı · Your digital security shield</p>
+</header>
+
+<div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLang('en', this)">🇬🇧 English</button>
+    <button class="lang-btn" onclick="switchLang('tr', this)">🇹🇷 Türkçe</button>
+</div>
+
+<div class="container">
+
+    <!-- ENGLISH -->
+    <div class="content active" id="content-en">
+        <span class="updated">Last updated: June 2026</span>
+
+        <p>Welcome to Sentriola. These Terms of Use ("Terms") govern your access to and use of the Sentriola mobile application ("App", "Service"). By downloading, accessing, or using the App, you agree to be bound by these Terms. If you do not agree, please do not use the App.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By using Sentriola, you confirm that you are at least 13 years old and that you have read, understood, and agree to be bound by these Terms and our <a href="privacy.html">Privacy Policy</a>.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Sentriola is a digital security tool that provides the following features:</p>
+        <ul>
+            <li>QR code scanning and security analysis</li>
+            <li>URL safety checking</li>
+            <li>SMS phishing analysis</li>
+            <li>Secure password generation and breach checking</li>
+        </ul>
+        <p>The App analyzes content using third-party security engines and AI models to help you identify potential threats.</p>
+
+        <div class="warning">
+            <p>⚠️ <strong>Important Disclaimer:</strong> Sentriola is an assistive tool and does not guarantee the detection of all threats. Security analysis results are provided for informational purposes only. The final decision regarding any URL, QR code, SMS, or password rests entirely with you. We are not responsible for any consequences resulting from your reliance on the App's analysis.</p>
+        </div>
+
+        <h2>3. No Warranty</h2>
+        <p>The App is provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied. We do not warrant that:</p>
+        <ul>
+            <li>The App will be error-free, uninterrupted, or secure</li>
+            <li>Security analysis results will be accurate, complete, or reliable</li>
+            <li>All threats, malware, or phishing attempts will be detected</li>
+            <li>Safe-rated content is actually free of risk</li>
+        </ul>
+
+        <h2>4. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Sentriola and its developers shall not be liable for any direct, indirect, incidental, consequential, or punitive damages, including but not limited to financial loss, data loss, or security breaches, arising from:</p>
+        <ul>
+            <li>Your use of or inability to use the App</li>
+            <li>Reliance on any analysis or result provided by the App</li>
+            <li>Accessing a URL or content that the App rated as safe</li>
+            <li>Any third-party services integrated into the App</li>
+        </ul>
+
+        <h2>5. User Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+            <li>Use the App only for lawful purposes</li>
+            <li>Provide accurate information when creating an account</li>
+            <li>Maintain the security of your account credentials</li>
+            <li>Not misuse, reverse-engineer, or attempt to disrupt the App</li>
+            <li>Exercise your own judgment regarding security decisions</li>
+        </ul>
+
+        <h2>6. Accounts</h2>
+        <p>You may use Sentriola as a guest or by creating an account. When you create an account, you are responsible for maintaining the confidentiality of your credentials and for all activities under your account. You may delete your account at any time from the Profile screen or via <a href="delete-account.html">sentriola.com/delete-account</a>.</p>
+
+        <h2>7. Premium Subscription</h2>
+        <p>Sentriola offers optional Premium subscriptions:</p>
+        <ul>
+            <li>Subscriptions are billed through Google Play Billing</li>
+            <li>Payment is charged to your Google Play account upon confirmation</li>
+            <li>Subscriptions automatically renew unless cancelled before the renewal date</li>
+            <li>You may cancel anytime; access continues until the end of the current billing period</li>
+            <li>Refunds are subject to Google Play's refund policy</li>
+        </ul>
+
+        <h2>8. Third-Party Services</h2>
+        <p>The App integrates third-party services including Firebase, VirusTotal, Groq AI, and HaveIBeenPwned. We are not responsible for the availability, accuracy, or practices of these third-party services. Their respective terms and privacy policies apply.</p>
+
+        <h2>9. Intellectual Property</h2>
+        <p>All content, design, code, trademarks, and materials within the App are the property of Sentriola and are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission.</p>
+
+        <h2>10. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. Continued use of the App after changes constitutes acceptance of the revised Terms. We will indicate the date of the latest revision at the top of this page.</p>
+
+        <h2>11. Termination</h2>
+        <p>We reserve the right to suspend or terminate your access to the App at any time, without notice, if you violate these Terms or engage in any harmful or unlawful activity.</p>
+
+        <h2>12. Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Türkiye, without regard to its conflict of law provisions.</p>
+
+        <h2>13. Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at:</p>
+        <p><a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+    </div>
+
+    <!-- TÜRKÇE -->
+    <div class="content" id="content-tr">
+        <span class="updated">Son güncelleme: Haziran 2026</span>
+
+        <p>Sentriola'ya hoş geldiniz. Bu Kullanım Koşulları ("Koşullar"), Sentriola mobil uygulamasına ("Uygulama", "Hizmet") erişiminizi ve kullanımınızı düzenler. Uygulamayı indirerek, erişerek veya kullanarak bu Koşulları kabul etmiş sayılırsınız. Kabul etmiyorsanız, lütfen Uygulamayı kullanmayın.</p>
+
+        <h2>1. Koşulların Kabulü</h2>
+        <p>Sentriola'yı kullanarak en az 13 yaşında olduğunuzu, bu Koşulları ve <a href="privacy.html">Gizlilik Politikamızı</a> okuyup anladığınızı ve kabul ettiğinizi beyan edersiniz.</p>
+
+        <h2>2. Hizmet Tanımı</h2>
+        <p>Sentriola, aşağıdaki özellikleri sunan bir dijital güvenlik aracıdır:</p>
+        <ul>
+            <li>QR kod tarama ve güvenlik analizi</li>
+            <li>URL güvenlik kontrolü</li>
+            <li>SMS phishing analizi</li>
+            <li>Güvenli şifre üretimi ve ihlal kontrolü</li>
+        </ul>
+        <p>Uygulama, potansiyel tehditleri tespit etmenize yardımcı olmak için üçüncü taraf güvenlik motorları ve yapay zeka modelleri kullanarak içeriği analiz eder.</p>
+
+        <div class="warning">
+            <p>⚠️ <strong>Önemli Sorumluluk Reddi:</strong> Sentriola yardımcı bir araçtır ve tüm tehditlerin tespitini garanti etmez. Güvenlik analiz sonuçları yalnızca bilgilendirme amaçlıdır. Herhangi bir URL, QR kod, SMS veya şifre ile ilgili nihai karar tamamen size aittir. Uygulamanın analizine güvenmenizden kaynaklanan sonuçlardan sorumlu değiliz.</p>
+        </div>
+
+        <h2>3. Garanti Reddi</h2>
+        <p>Uygulama, açık veya zımni hiçbir garanti olmaksızın "olduğu gibi" ve "mevcut olduğu şekilde" sunulur. Şunları garanti etmeyiz:</p>
+        <ul>
+            <li>Uygulamanın hatasız, kesintisiz veya güvenli olacağını</li>
+            <li>Güvenlik analiz sonuçlarının doğru, eksiksiz veya güvenilir olacağını</li>
+            <li>Tüm tehditlerin, kötü amaçlı yazılımların veya phishing girişimlerinin tespit edileceğini</li>
+            <li>Güvenli olarak değerlendirilen içeriğin gerçekten risksiz olduğunu</li>
+        </ul>
+
+        <h2>4. Sorumluluğun Sınırlandırılması</h2>
+        <p>Yasaların izin verdiği azami ölçüde, Sentriola ve geliştiricileri, aşağıdakilerden kaynaklanan doğrudan, dolaylı, arızi, sonuç olarak ortaya çıkan veya cezai zararlardan (finansal kayıp, veri kaybı veya güvenlik ihlalleri dahil ancak bunlarla sınırlı olmamak üzere) sorumlu tutulamaz:</p>
+        <ul>
+            <li>Uygulamayı kullanmanız veya kullanamamanız</li>
+            <li>Uygulama tarafından sağlanan herhangi bir analize veya sonuca güvenmeniz</li>
+            <li>Uygulamanın güvenli olarak değerlendirdiği bir URL veya içeriğe erişmeniz</li>
+            <li>Uygulamaya entegre edilmiş herhangi bir üçüncü taraf hizmeti</li>
+        </ul>
+
+        <h2>5. Kullanıcı Sorumlulukları</h2>
+        <p>Şunları kabul edersiniz:</p>
+        <ul>
+            <li>Uygulamayı yalnızca yasal amaçlarla kullanmak</li>
+            <li>Hesap oluştururken doğru bilgi vermek</li>
+            <li>Hesap kimlik bilgilerinizin güvenliğini sağlamak</li>
+            <li>Uygulamayı kötüye kullanmamak, tersine mühendislik yapmamak veya bozmaya çalışmamak</li>
+            <li>Güvenlik kararlarında kendi muhakemenizi kullanmak</li>
+        </ul>
+
+        <h2>6. Hesaplar</h2>
+        <p>Sentriola'yı misafir olarak veya hesap oluşturarak kullanabilirsiniz. Hesap oluşturduğunuzda, kimlik bilgilerinizin gizliliğini korumaktan ve hesabınız altındaki tüm faaliyetlerden sorumlusunuz. Hesabınızı istediğiniz zaman Profil ekranından veya <a href="delete-account.html">sentriola.com/delete-account</a> adresinden silebilirsiniz.</p>
+
+        <h2>7. Premium Abonelik</h2>
+        <p>Sentriola isteğe bağlı Premium abonelikler sunar:</p>
+        <ul>
+            <li>Abonelikler Google Play Billing üzerinden faturalandırılır</li>
+            <li>Ödeme, onay üzerine Google Play hesabınızdan tahsil edilir</li>
+            <li>Abonelikler, yenileme tarihinden önce iptal edilmedikçe otomatik olarak yenilenir</li>
+            <li>İstediğiniz zaman iptal edebilirsiniz; erişim mevcut fatura döneminin sonuna kadar devam eder</li>
+            <li>İadeler Google Play'in iade politikasına tabidir</li>
+        </ul>
+
+        <h2>8. Üçüncü Taraf Hizmetler</h2>
+        <p>Uygulama, Firebase, VirusTotal, Groq AI ve HaveIBeenPwned dahil olmak üzere üçüncü taraf hizmetleri entegre eder. Bu üçüncü taraf hizmetlerin kullanılabilirliğinden, doğruluğundan veya uygulamalarından sorumlu değiliz. Bunların kendi koşulları ve gizlilik politikaları geçerlidir.</p>
+
+        <h2>9. Fikri Mülkiyet</h2>
+        <p>Uygulama içindeki tüm içerik, tasarım, kod, ticari markalar ve materyaller Sentriola'nın mülkiyetindedir ve fikri mülkiyet yasalarıyla korunmaktadır. Yazılı iznimiz olmadan kopyalayamaz, değiştiremez, dağıtamaz veya türev çalışmalar oluşturamazsınız.</p>
+
+        <h2>10. Koşullardaki Değişiklikler</h2>
+        <p>Bu Koşulları zaman zaman güncelleyebiliriz. Değişikliklerden sonra Uygulamayı kullanmaya devam etmeniz, revize edilmiş Koşulları kabul ettiğiniz anlamına gelir. En son revizyon tarihini bu sayfanın üst kısmında belirtiriz.</p>
+
+        <h2>11. Fesih</h2>
+        <p>Bu Koşulları ihlal etmeniz veya herhangi bir zararlı ya da yasa dışı faaliyette bulunmanız durumunda, Uygulamaya erişiminizi herhangi bir zamanda, bildirimde bulunmaksızın askıya alma veya sonlandırma hakkını saklı tutarız.</p>
+
+        <h2>12. Geçerli Hukuk</h2>
+        <p>Bu Koşullar, kanunlar ihtilafı hükümlerine bakılmaksızın Türkiye Cumhuriyeti yasalarına göre yönetilir ve yorumlanır.</p>
+
+        <h2>13. İletişim</h2>
+        <p>Bu Koşullar hakkında sorularınız için bizimle iletişime geçin:</p>
+        <p><a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Sentriola · <a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+</footer>
+
+<script>
+    function switchLang(lang, btn) {
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('content-' + lang).classList.add('active');
+        btn.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
