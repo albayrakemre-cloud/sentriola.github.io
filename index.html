@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentriola — Your Digital Security Shield</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #00D4FF;
+            --purple: #7C3AED;
+            --bg: #0A0E1A;
+            --surface: #111827;
+            --border: #1F2937;
+            --text: #E2E8F0;
+            --muted: #64748B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        .cursor-follower {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.12s ease;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.5);
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--bg) !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: opacity 0.2s !important;
+        }
+
+        .nav-cta:hover { opacity: 0.85; color: var(--bg) !important; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% -20%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(31, 41, 55, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(31, 41, 55, 0.3) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .hero-badge span {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        h1 .gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: var(--bg);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 0 32px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 48px rgba(0, 212, 255, 0.35);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            margin-top: 72px;
+            flex-wrap: wrap;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Section */
+        section { padding: 100px 24px; }
+
+        .section-label {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.03) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover::before { opacity: 1; }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            margin-top: 16px;
+            background: rgba(0, 212, 255, 0.08);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .feature-tag.premium {
+            background: rgba(255, 215, 0, 0.08);
+            color: #FFD700;
+        }
+
+        /* How it works */
+        .how-section { background: var(--surface); }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-num {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Security section */
+        .security-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 64px;
+        }
+
+        .security-list { list-style: none; }
+
+        .security-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .security-list li:last-child { border-bottom: none; }
+
+        .security-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .security-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .security-text p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .security-visual {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .shield {
+            font-size: 80px;
+            margin-bottom: 24px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .security-visual h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .security-visual p {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .badge {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+        }
+
+        .pricing-card:hover { transform: translateY(-4px); }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .pricing-name {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-price {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .pricing-period {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--muted);
+            padding: 8px 0;
+        }
+
+        .pricing-features li span {
+            color: var(--success);
+            font-size: 16px;
+        }
+
+        .pricing-features li.disabled {
+            opacity: 0.4;
+        }
+
+        .pricing-features li.disabled span {
+            color: var(--muted);
+        }
+
+        .btn-pricing {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-pricing.primary {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .btn-pricing.ghost {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-pricing:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: gap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-copy {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Scroll indicator */
+        .scroll-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--purple));
+            z-index: 200;
+            transition: width 0.1s;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .security-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 32px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="follower"></div>
+<div class="scroll-line" id="scrollLine"></div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-logo">SENTRIOLA</div>
+    <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="#download" class="nav-cta">Download</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span></span>
+            Now available on Android
+        </div>
+        <h1>
+            Your Digital<br>
+            <span class="gradient">Security Shield</span>
+        </h1>
+        <p class="hero-sub">
+            Scan QR codes, analyze URLs, detect phishing SMS, and generate unbreakable passwords — all in one app.
+        </p>
+        <div class="hero-btns">
+            <a href="#download" class="btn-primary">
+                ▶ Get on Google Play
+            </a>
+            <a href="#features" class="btn-ghost">
+                Explore Features →
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">70+</div>
+                <div class="stat-label">Security Engines</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">AES-256</div>
+                <div class="stat-label">Encryption</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">4</div>
+                <div class="stat-label">Security Modules</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Data Sold</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+    <div class="container">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything you need to<br>stay protected</h2>
+        <p class="section-sub">Four powerful security modules working together to keep you safe in the digital world.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">▦</span>
+                <div class="feature-title">QR Scanner</div>
+                <p class="feature-desc">Scan any QR code and instantly analyze the destination URL with 70+ security engines before you open it.</p>
+                <span class="feature-tag">VirusTotal Powered</span>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔗</span>
+                <div class="feature-title">URL Checker</div>
+                <p class="feature-desc">Paste any link and get a full security report. Detects phishing, malware, and suspicious patterns in seconds.</p>
+                <span class="feature-tag">Real-time Analysis</span>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💬</span>
+                <div class="feature-title">SMS Analyzer</div>
+                <p class="feature-desc">Paste suspicious SMS text and let our AI analyze it for phishing attempts, fake institutions, and hidden threats.</p>
+                <span class="feature-tag">AI Powered</span>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔑</span>
+                <div class="feature-title">Password Generator</div>
+                <p class="feature-desc">Generate cryptographically secure passwords and check if they've been compromised in any known data breach.</p>
+                <span class="feature-tag premium">⚡ Premium</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section class="how-section">
+    <div class="container">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Simple. Fast. Secure.</h2>
+        <p class="section-sub">Protect yourself in three easy steps.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Scan or Paste</h3>
+                <p>Scan a QR code with your camera or paste a URL, SMS, or password into the app.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Instant Analysis</h3>
+                <p>Our engine checks against 70+ security databases and AI models in real time.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Stay Safe</h3>
+                <p>Get a clear result — Safe, Suspicious, or Dangerous — and take action confidently.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Security -->
+<section id="security">
+    <div class="container">
+        <div class="section-label">Security</div>
+        <h2 class="section-title">Built with privacy first</h2>
+        <p class="section-sub">Your data stays yours. We built Sentriola so your most sensitive information never leaves your device.</p>
+
+        <div class="security-grid">
+            <ul class="security-list">
+                <li>
+                    <div class="security-icon">🔒</div>
+                    <div class="security-text">
+                        <h4>AES-256 Encryption</h4>
+                        <p>Passwords are encrypted with AES-256 via Android Keystore and stored only on your device.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="security-icon">🛡️</div>
+                    <div class="security-text">
+                        <h4>K-Anonymity</h4>
+                        <p>Password breach checks use k-anonymity — your actual password is never sent to any server.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="security-icon">👁️</div>
+                    <div class="security-text">
+                        <h4>No Data Selling</h4>
+                        <p>We never sell your data. Period. Your information is used only to provide security features.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="security-icon">🔐</div>
+                    <div class="security-text">
+                        <h4>App Lock</h4>
+                        <p>Protect access to Sentriola with biometric authentication or your device PIN.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="security-visual">
+                <span class="shield">🛡️</span>
+                <h3>Bank-Grade Security</h3>
+                <p>The same encryption standards used by financial institutions and governments.</p>
+                <div class="badges">
+                    <span class="badge">AES-256</span>
+                    <span class="badge">Android Keystore</span>
+                    <span class="badge">K-Anonymity</span>
+                    <span class="badge">Firebase Auth</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+    <div class="container" style="text-align: center;">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Start free, upgrade anytime</h2>
+        <p class="section-sub" style="margin: 0 auto;">No hidden fees. Cancel anytime.</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-name">Free</div>
+                <div class="pricing-price">$0</div>
+                <div class="pricing-period">forever</div>
+                <ul class="pricing-features">
+                    <li><span>✓</span> 4 daily scans (guest)</li>
+                    <li><span>✓</span> 15 daily scans (account)</li>
+                    <li><span>✓</span> QR, URL, SMS, Password</li>
+                    <li><span>✓</span> Basic security reports</li>
+                    <li class="disabled"><span>✗</span> Password history</li>
+                    <li class="disabled"><span>✗</span> URL history</li>
+                    <li class="disabled"><span>✗</span> Unlimited scans</li>
+                </ul>
+                <a href="#download" class="btn-pricing ghost">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">⚡ Most Popular</div>
+                <div class="pricing-name">Premium</div>
+                <div class="pricing-price">Soon</div>
+                <div class="pricing-period">per month</div>
+                <ul class="pricing-features">
+                    <li><span>✓</span> 50 daily scans</li>
+                    <li><span>✓</span> QR, URL, SMS, Password</li>
+                    <li><span>✓</span> Full security reports</li>
+                    <li><span>✓</span> Password history</li>
+                    <li><span>✓</span> URL history</li>
+                    <li><span>✓</span> Priority support</li>
+                    <li><span>✓</span> Early access to new features</li>
+                </ul>
+                <a href="#download" class="btn-pricing primary">⚡ Go Premium</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="download">
+    <div class="container">
+        <h2>Ready to stay protected?</h2>
+        <p>Download Sentriola for free on Android.</p>
+        <a href="#" class="btn-primary" style="display: inline-flex;">
+            ▶ Download on Google Play
+        </a>
+        <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">
+            Coming soon to the Play Store
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">SENTRIOLA</div>
+        <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="delete-account.html">Delete Account</a></li>
+            <li><a href="mailto:support@sentriola.com">Contact</a></li>
+        </ul>
+        <div class="footer-copy">© 2026 Sentriola</div>
+    </div>
+</footer>
+
+<script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('follower');
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = mouseX - 6 + 'px';
+        cursor.style.top = mouseY - 6 + 'px';
+    });
+
+    function animateFollower() {
+        followerX += (mouseX - followerX - 18) * 0.12;
+        followerY += (mouseY - followerY - 18) * 0.12;
+        follower.style.left = followerX + 'px';
+        follower.style.top = followerY + 'px';
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'scale(2)';
+            follower.style.transform = 'scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'scale(1)';
+            follower.style.transform = 'scale(1)';
+        });
+    });
+
+    // Scroll progress
+    const scrollLine = document.getElementById('scrollLine');
+    window.addEventListener('scroll', () => {
+        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+        scrollLine.style.width = pct + '%';
+    });
+</script>
+
+</body>
+</html>
