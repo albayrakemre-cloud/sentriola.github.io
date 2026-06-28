@@ -658,6 +658,10 @@
             .hero-stats { gap: 32px; }
             .footer-inner { flex-direction: column; text-align: center; }
         }
+        @media (hover: none), (pointer: coarse) {
+           .cursor, .cursor-follower { display: none !important; }
+            body, a, button { cursor: auto !important; }
+        }
     </style>
 </head>
 <body>
@@ -889,6 +893,7 @@
             <li><a href="#security">Security</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
             <li><a href="delete-account.html">Delete Account</a></li>
             <li><a href="mailto:support@sentriola.com">Contact</a></li>
         </ul>
