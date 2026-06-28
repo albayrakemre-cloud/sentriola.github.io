@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentriola - Privacy Policy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 24px;
+            color: #1a1a2e;
+            line-height: 1.7;
+        }
+        h1 { color: #00D4FF; }
+        h2 { color: #1a1a2e; margin-top: 32px; }
+        a { color: #00D4FF; }
+    </style>
+</head>
+<body>
+    <h1>Sentriola Privacy Policy</h1>
+    <p><strong>Last updated:</strong> June 2025</p>
+
+    <p>Sentriola ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+
+    <h2>1. Information We Collect</h2>
+    <h3>Account Information</h3>
+    <p>When you create an account, we collect your email address and display name via Firebase Authentication. You may also sign in using Google Sign-In.</p>
+
+    <h3>Premium Subscription Data</h3>
+    <p>If you purchase a Premium subscription, we store your subscription start date, end date, and plan type in Firebase Firestore.</p>
+
+    <h3>Device Information</h3>
+    <p>For guest users, we use your device's anonymous ID (Android ID) solely to manage daily usage limits. This data is stored only on your device.</p>
+
+    <h3>Password History</h3>
+    <p>Generated passwords are stored locally on your device using AES-256 encryption via Android Keystore. We do not have access to your passwords — they never leave your device.</p>
+
+    <h3>Usage Statistics</h3>
+    <p>Basic usage counts (QR scans, URL checks, etc.) are stored locally on your device to manage daily limits.</p>
+
+    <h2>2. Third-Party Services</h2>
+    <p>Sentriola uses the following third-party services:</p>
+    <ul>
+        <li><strong>Firebase (Google)</strong> — Authentication and Firestore database for account and subscription management.</li>
+        <li><strong>VirusTotal</strong> — URLs and QR code links are sent to VirusTotal for security analysis. VirusTotal's privacy policy applies.</li>
+        <li><strong>Groq AI</strong> — SMS text (without personal information) is sent to Groq for phishing analysis and daily security tips.</li>
+        <li><strong>HaveIBeenPwned</strong> — Only the first 5 characters of a SHA-1 hash of your password are sent (k-anonymity). Your actual password is never transmitted.</li>
+        <li><strong>Google Sign-In</strong> — Optional authentication method.</li>
+    </ul>
+
+    <h2>3. Permissions We Use</h2>
+    <ul>
+        <li><strong>Camera</strong> — Used only for QR code scanning. We do not store or transmit photos.</li>
+        <li><strong>Internet</strong> — Required for security analysis APIs and account features.</li>
+        <li><strong>Notifications</strong> — Used to remind you to clear clipboard after copying a password.</li>
+    </ul>
+
+    <h2>4. Data Security</h2>
+    <p>We implement industry-standard security measures:</p>
+    <ul>
+        <li>Passwords are encrypted with AES-256 and stored only on your device.</li>
+        <li>Account data is protected by Firebase's security infrastructure.</li>
+        <li>We use k-anonymity for password breach checking — your actual password is never sent to any server.</li>
+    </ul>
+
+    <h2>5. Data Retention</h2>
+    <p>Account data is retained until you delete your account. Local data (password history, usage stats) is stored on your device and can be cleared from Settings. You may delete your account at any time from the Profile screen.</p>
+
+    <h2>6. Children's Privacy</h2>
+    <p>Sentriola is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+
+    <h2>7. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last updated" date.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+    <p><a href="mailto:support@sentriola.com">support@sentriola.com</a></p>
+</body>
+</html>
